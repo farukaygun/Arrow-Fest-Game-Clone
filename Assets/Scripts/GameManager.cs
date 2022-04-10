@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] private GameObject arrows;
+
+    private void Update() {
+        if (arrows.transform.childCount <= 0)
+            GameOver();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void GameOver() {
+        SceneManager.LoadScene(0);        
     }
 }
