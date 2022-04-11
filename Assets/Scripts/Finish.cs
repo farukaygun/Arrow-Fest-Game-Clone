@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Finish : MonoBehaviour
 {
-	private void OnTriggerEnter(Collider other) {
-		if (other.transform.tag == "Player") {
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.transform.tag == "Player")
+		{
 			GameManager.instance.isGameWin = true;
 		}
 	}

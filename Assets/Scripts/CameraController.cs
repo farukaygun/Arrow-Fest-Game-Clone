@@ -9,14 +9,17 @@ public class CameraController : MonoBehaviour
 	[SerializeField] private Vector3 offsetRotation;
 
 
-	private void Start() {
+	private void Start()
+	{
 		target = GameObject.FindWithTag("Player").transform;
 		offsetPositon = new Vector3(0f, 5f, -15f);
 		offsetRotation = new Vector3(15f, 0, 0);
 	}
 
-	private void FixedUpdate() {
-		if (target != null) {
+	private void FixedUpdate()
+	{
+		if (target != null)
+		{
 			transform.position = target.position + offsetPositon;
 			transform.rotation = target.rotation * Quaternion.Euler(offsetRotation);
 		}
