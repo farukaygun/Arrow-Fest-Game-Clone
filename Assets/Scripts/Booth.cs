@@ -27,8 +27,7 @@ public class Booth : MonoBehaviour {
     private void AssignOperator() {
         int _operator = Random.Range(0, 3);
 
-        switch (_operator) 
-		{
+        switch (_operator) {
             case 0:
                 boothOperator = "+";
                 meshRenderer.material = blue;
@@ -49,14 +48,10 @@ public class Booth : MonoBehaviour {
     }
 
     private void AssignNumber() {
-        if (boothOperator == "+" || boothOperator == "-") 
-		{
+        if (boothOperator == "+" || boothOperator == "-")
             boothNumber = Random.Range(1, 50);
-        } 
 		else if (boothOperator == "*" || boothOperator == "/") 
-		{
             boothNumber = Random.Range(1, 3);
-        }
     }
 
     private void AssignText() {
@@ -64,8 +59,7 @@ public class Booth : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Player"))
-		{
+        if (other.CompareTag("Player")) {
             arrows = other.gameObject;
             GateTrigger(arrows.transform.childCount);
 			Destroy(this); // TODO: 
@@ -77,42 +71,34 @@ public class Booth : MonoBehaviour {
 		int instantiateCount;
 		int destroyCount;
 		
-		if (boothOperator == "+")
-		{
+		if (boothOperator == "+") {
 			newArrowsCount = arrowsCount + boothNumber;
 
-			for (int i = 0; i < boothNumber; i++)
-			{
+			for (int i = 0; i < boothNumber; i++) {
 				Instantiate(arrowPrefab, arrows.transform);
 			}
 		}
-		else if (boothOperator == "-")
-		{
+		else if (boothOperator == "-") {
 			newArrowsCount = arrowsCount - boothNumber;
 			destroyCount = arrowsCount - newArrowsCount;
 
-			for (int i = 0; i < destroyCount; i++)
-			{
+			for (int i = 0; i < destroyCount; i++) {
 				Destroy(arrows.transform.GetChild(i).gameObject);
 			}
 		}
-		else if (boothOperator == "*")
-		{
+		else if (boothOperator == "*") {
 			newArrowsCount = arrowsCount * boothNumber;
 			instantiateCount = newArrowsCount - arrowsCount;
 
-			for (int i = 0; i < instantiateCount; i++)
-			{
+			for (int i = 0; i < instantiateCount; i++) {
 				Instantiate(arrowPrefab, arrows.transform);
 			}
 		}
-		else if (boothOperator == "/")
-		{
+		else if (boothOperator == "/") {
 			newArrowsCount = arrowsCount / boothNumber;
 			destroyCount = arrowsCount - newArrowsCount;
 
-			for (int i = 0; i < destroyCount; i++)
-            {
+			for (int i = 0; i < destroyCount; i++) {
                 Destroy(arrows.transform.GetChild(i).gameObject);
             }
 		}
